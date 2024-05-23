@@ -41,6 +41,8 @@ class Letter {
     #color;
     #x;
     #y;
+    #idInterval;
+
     constructor(letter, speed, color, x, y) {
         this.#letter = letter;
         this.#speed = speed;
@@ -56,11 +58,11 @@ class Letter {
     }
 
     startCounting() {
-        setInterval(this.nextLetter, this.#speed, this);
+        this.#idInterval = setInterval(this.nextLetter, this.#speed, this);
     }
 
     stopCounting() {
-
+        clearInterval(this.#idInterval);
     }
 
     nextLetter(letter) {
